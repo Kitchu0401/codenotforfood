@@ -30,7 +30,7 @@ custom configuration file을 참조하게 해보려고 시간을 조금 쓰다�
 
 추후 추가 설정 옵션이 생기면 수정 할 것.
 
-[[링크는_아직_없다](https://github.com/Kitchu0401/codenotforfood/blob/master/mongodb/mongo.conf)]
+[[mongo.conf](https://github.com/Kitchu0401/codenotforfood/blob/master/mongodb/mongo.conf)]
 
 
 
