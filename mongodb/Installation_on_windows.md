@@ -4,7 +4,7 @@
 
 ## 설치
 
-[설치페이지](https://www.mongodb.com/download-center)
+[[설치페이지](https://www.mongodb.com/download-center)]
 
 커뮤니티 버전, windows server로 되어있어 불안했지만 64-bit and later로 설치.
 
@@ -15,7 +15,7 @@
 
 
 ## 서비스 등록
-windows에서 제공하는 sc.exe를 활용한 방법도 있다고 하지만 [참고](http://joont.tistory.com/44)
+windows에서 제공하는 sc.exe를 활용한 방법도 있다고 하지만 [[참고](http://joont.tistory.com/44)]
 
 mongodb에서 커맨드라인 명령어로 service install을 지원해준다. (mongod -h 참고)
 
@@ -30,9 +30,9 @@ custom configuration file을 참조하게 해보려고 시간을 조금 쓰다�
 
 추후 추가 설정 옵션이 생기면 수정 할 것.
 
-[링크는_아직_없다]()
+[[링크는_아직_없다]()]
 
 
 
 ## 참고
-[[MongoDB] 강좌 1편: 소개, 설치 및 데이터 모델링](https://velopert.com/436) by Velopert
+[[[MongoDB] 강좌 1편: 소개, 설치 및 데이터 모델링](https://velopert.com/436)] by Velopert
