@@ -40,4 +40,18 @@ Git 사용시 SSH 인증이 아닌 ID / Password 로 인증 할 경우, credenti
 ## Windows
 데스크탑 개발환경에서도 간편하게 push가 가능하도록 설정한다. [[링크](https://help.github.com/articles/caching-your-github-password-in-git/)]
 
-*작성중*
+1. 전역 설정
+
+    Windows의 경우 wincred를 사용한다.
+
+    ```
+    $ git config --global credential.helper wincred
+    ```
+
+2. Push
+
+    하던대로 하면 된다.
+
+    ```
+    $ git push "repository_name" "branch_name"
+    ```
