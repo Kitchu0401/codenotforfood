@@ -54,4 +54,6 @@ Git 사용시 SSH 인증이 아닌 ID / Password 로 인증 할 경우, credenti
 
     ```
     $ git push "repository_name" "branch_name"
+    Username for 'https://github.com':
+    Password for 'https://"Username"@github.com':
     ```
