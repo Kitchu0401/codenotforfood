@@ -50,7 +50,7 @@ Git 사용시 SSH 인증이 아닌 ID / Password 로 인증 할 경우, credenti
 
 2. Push
 
-    하던대로 하면 된다.
+    하던대로 하면 된다. 최초 인증 이후에는 별도의 ID / Password 입력을 생략 할 수 있다.
 
     ```
     $ git push "repository_name" "branch_name"
