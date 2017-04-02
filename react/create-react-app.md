@@ -1,0 +1,1 @@
+# npm package 'create-react-app' [[github]('https://github.com/facebookincubator/create-react-app')]
