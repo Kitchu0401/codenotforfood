@@ -1,8 +1,6 @@
-# npm package 'create-react-app'
-[[README.md]('https://github.com/facebookincubator/create-react-app')]
+# npm package 'create-react-app' [[README.md](https://github.com/facebookincubator/create-react-app)]
 
-## 그림, 폰트, 파일을 추가하기
-[[link](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-images-fonts-and-files)]
+## 그림, 폰트, 파일을 추가하기 [[link](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-images-fonts-and-files)]
 
 1. 정석
 
@@ -49,9 +47,7 @@
     export default Mark;
     ```
 
-2. 그래서, 좀 더 쉽게? Escape Hatch
-
-    [[link]('https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#using-the-public-folder')]
+2. 그래서, 좀 더 쉽게? Escape Hatch [[link](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#using-the-public-folder)]
 
     component 코드의 물리적인 depth별로 달라질 수 있는 경로를 그대로 쓰지 말고, 상대경로를 쓸 수는 없을까?
     
