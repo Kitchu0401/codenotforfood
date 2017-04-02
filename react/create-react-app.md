@@ -1,6 +1,8 @@
-# npm package 'create-react-app' [[README.md]('https://github.com/facebookincubator/create-react-app')]
+# npm package 'create-react-app'
+[[README.md]('https://github.com/facebookincubator/create-react-app')]
 
-## 그림, 폰트, 파일을 추가하기 [[link](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-images-fonts-and-files)]
+## 그림, 폰트, 파일을 추가하기
+[[link](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-images-fonts-and-files)]
 
 1. 정석
 
@@ -12,7 +14,7 @@
     - 서버로의 요청을 줄이기 위해 10,000 bytes 이하의 이미지는 data URI로 반환됨 (SVG 제외)
 
     그래서 다음의 코드가 예제로 주어져있다.
-    
+
     ``` js
     import React from 'react';
     import logo from './logo.png'; // Tell Webpack this JS file uses this image
@@ -47,13 +49,15 @@
     export default Mark;
     ```
 
-2. 그래서, 좀 더 쉽게? Escape Hatch [[link]('https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#using-the-public-folder')]
+2. 그래서, 좀 더 쉽게? Escape Hatch
+
+    [[link]('https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#using-the-public-folder')]
 
     component 코드의 물리적인 depth별로 달라질 수 있는 경로를 그대로 쓰지 말고, 상대경로를 쓸 수는 없을까?
     
     public 폴더 내의 파일은 minified / bundled 되지 않으며, 원본 상태 그대로 access 가능함.
 
-    `index.html` 내부(사실 바로 위에서 얘기한 pre-precess를 타지 않는 파일들이 모두 포함되는 듯)에서 접근할 때와 JavaScript code(예를 들어, React Component)에서 접근할 때의 코드가 상이하다.
+    `index.html` 내부(사실 바로 위에서 얘기한 pre-process를 타지 않는 파일들이 모두 포함되는 듯)에서 접근할 때와 JavaScript code(예를 들어, React Component)에서 접근할 때의 코드가 상이하다.
 
     발췌 :
     > Inside `index.html`. you can use it like this:
@@ -72,3 +76,8 @@
         return <img src={process.env.PUBLIC_URL + '/img/logo.png'} />
     }
     ```
+
+    다운사이드로 다음의 사항들을 기억 할 것.
+    - public 폴더는 별도의 후처리나 minified 되지 않음.
+    - compile 타이밍에 missing file이 탐지되지 않으며, 사용자 접근시 404 에러를 발생시킴. 
+    - 파일명이 content hash를 포함하지 않기 때문에 querry args를 포함하거나 파일명이 변경 될 때마다 이를 수정해주어야 한다.
