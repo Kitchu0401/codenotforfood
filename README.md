@@ -14,3 +14,4 @@
 - TensorFlow
 - Typescript
 - Vue.js
+- Nginx [[stackoverflow.com](http://stackoverflow.com/questions/16549026/how-to-run-more-than-one-app-on-one-instance-of-ec2)]
