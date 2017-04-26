@@ -36,6 +36,31 @@ sudo apt-get install -y nodejs
 sudo apt-get install git
 ```
 
+## MongoDB 설치 [[Document](https://docs.mongodb.com/getting-started/shell/tutorial/install-mongodb-on-ubuntu/)]
+``` sh
+# Import the public key used by the package management system.
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv [public-key]
+
+# 아래 명령어를 실행하기 전 운영체제의 버전을 확실하게 모른다면 아래의 명령어로 운영체제의 버전을 체크한다.
+grep . /etc/*-release
+
+# Create a list file for MongoDB.
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+# Reload local package database.
+sudo apt-get update
+
+# Install the MongoDB packages.
+sudo apt-get install -y mongodb-org
+
+# 기본 설정으로 /data/db 폴더가 생성되어있어야 한다.
+sudo mkdir /data
+sudo mkdir /data/db
+
+# Launch
+sudo mongod
+```
+
 ## 주의
 
 - `apt-get`이 익숙하다면, 운영체제 선택시 **Ubuntu**를 선택 할 것.
