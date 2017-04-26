@@ -24,6 +24,18 @@ AWS Service 패널에서 EC2를 선택한 후 Instance를 생성하여 시작한
 
     Ex: `ssh -i "aws-lazecrew-2.pem" ec2-user@ec2-52-79-118-202.ap-northeast-2.compute.amazonaws.com`
 
+## Node.js 및 npm 설치 [[Document](https://nodejs.org/ko/download/package-manager/#debian-ubuntu-linux)]
+``` sh
+# 이 명령줄을 생략하면 하위 버전(v4.0~)의 Node.js가 설치되니 주의. Npm이 함께 설치되지 않는다.
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+## Git 설치
+``` sh
+sudo apt-get install git
+```
+
 ## 주의
 
 - `apt-get`이 익숙하다면, 운영체제 선택시 **Ubuntu**를 선택 할 것.
