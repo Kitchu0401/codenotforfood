@@ -20,3 +20,4 @@
 - Nginx
     - [[stackoverflow.com](http://stackoverflow.com/questions/16549026/how-to-run-more-than-one-app-on-one-instance-of-ec2)]
     - [[nginx를 이용한 Reverse Proxy 서버 구축 by 제이크](http://interconnection.tistory.com/27)]
+    - [[stackoverflow.com - Nginx reverse proxy + URL rewrite](https://serverfault.com/questions/379675/nginx-reverse-proxy-url-rewrite)]
