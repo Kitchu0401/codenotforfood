@@ -1,2 +1,5 @@
 # Github webhook handling with Gith
-Initial test commit #2
+
+## Inspired by
+- [[Gith github official repository](https://github.com/danheberden/gith)]
+- [[AUto deploy node.js repos - git hooks](https://github.com/danheberden/gith)]
