@@ -12,6 +12,6 @@
 $ code FILE_NAME
 ```
 
-참고:
-- [공식 도큐먼트](https://code.visualstudio.com/docs/setup/mac#_command-line)
-- [stackoverflow.com](https://stackoverflow.com/questions/41377489/how-to-open-a-file-from-the-integrated-terminal-in-visual-studio-code)
+References:
+- [공식 도큐먼트: Running VS Code on Mac](https://code.visualstudio.com/docs/setup/mac#_command-line)
+- [stackoverflow.com: How to open a file from the integrated terminal in Visual Studio Code?](https://stackoverflow.com/questions/41377489/how-to-open-a-file-from-the-integrated-terminal-in-visual-studio-code)
