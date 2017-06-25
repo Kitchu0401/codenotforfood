@@ -81,7 +81,11 @@ users
 1. 중복을 제거
 2. 의도를 드러냄
 중복을 제거하면 자연스럽게 나오는 함수?
-for문 기반의 코드를 리팩토링하며 작성 -> 함수형 프로그래밍에 익숙하지 않은 사람이 익숙한 코드를 리팩토링하며 보여주는 진행방식
+
+for문 기반의 코드를 리팩토링하며 작성
+
+-> 함수형 프로그래밍에 익숙하지 않은 사람이 익숙한 코드를 리팩토링하며 보여주는 진행방식
+
 _filter > _map > _each 순서대로 리팩토링
 ``` js
 function filter (users) {
@@ -114,7 +118,9 @@ console.log(
 )
 ```
 함수형 프로그래밍: 추상화의 단위 -> 함수
+
 테스트의 용이성: 객체를 통한 프로세스 전체 테스트 불필요, 개별 함수 단위 테스트 가능
+
 함수형 프로그래밍의 테스트는 아무때에나 이루어져도 ok
 
 ## 기존의 filter 등의 함수는??
@@ -123,21 +129,25 @@ console.log(
 [1, 2, 3].filter(function (num) => { return % 2 === 0 })
 ```
 `[1,2,3]`이란 객체가 존재해야하기 때문에 순수한 의미의 함수형 프로그래밍이 아니라고 생각
+
 함수형 프로그래밍이라면 적어도 독립적으로 존재해야함.
+
 객체에 종속 받는 `filter()` 등의 배열 함수, `document.querySelector`의 예
 
 `_each()`의 경우 넘겨받는 대상이 무엇이냐는 상관없이
 1. length라는 값을 가지고 있고
 2. length가 숫자형 값일 경우
 대상의 크기만큼 순회하는 보다 자유로운 함수
-결과적으로 제약이 적어지고, 다형성은 높아짐
 
-
+    결과적으로 제약이 적어지고, 다형성은 높아짐
 
 ** 쉬는시간 **
 
 ## 커링
 _curry
+
+[커링이란?](http://anster.tistory.com/144)
+
 ``` js
 function _curry (func) {
   return function (a) {
@@ -241,11 +251,8 @@ _each(null, function (v) { console.log(v) })
 http://www.globalnerdy.com/wordpress/wp-content/uploads/2016/06/map-filter-reduce-in-emoji-1.png
 https://atendesigngroup.com/blog/array-map-filter-and-reduce-js
 
-
-
 # 컬렉션 중심 프로그래밍
 하위함수들을 함수형 프로그래밍으로 리팩토링하기
-
 
 # 자바스크립트에서의 지연 평가
 실제로 호출되는 시점에 평가?
