@@ -8,7 +8,7 @@
 - 2005    TNC(태터앤컴퍼니) 설립
 - 2006.05 다음 티스토리 서비스 오픈 (TatterTools 기반)
 - 2007.08 Textcude로 브랜드 변경
-- 2008.09 Google TNC / textcube.com수인수
+- 2008.09 Google TNC / textcube.com 인수
 
 ## Textcube 프로젝트 경험
 
@@ -79,7 +79,7 @@ aiodocer 프로젝트 인수 후 협업
 Sorna 내부 리팩토링 과정에서 asyncio 관련 중복 코드 라이브러리화
 
 만든지 2달밖에 안됐는데 Star 12..?
-- 저겆ㄹ한 곳에 홍보
+- 적절한 곳에 홍보
 - 지인에게 홍보
 - 세미나 와서 홍보
 
