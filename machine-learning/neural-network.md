@@ -19,7 +19,13 @@
 
 - 계단 함수: 입력값에 따라 0 또는 1을 출력값으로 반환하는 함수
 - 시그노이드 함수: 입력값에 따라 0에서 1까지를 출력값으로 반환하는 함수
-- 렐루 함수: 입력값이 0 이하일 경우 0을, 0을 초과할 경우 입력값을 반환하는 함수
+- 렐루 함수: 입력값이 0 이하일 경우 0을, 0을 초과할 경우 입력값을 반환하는 함수 (계)
+  - 최근에는 렐루 함수를 많이 사용함
+  - [[Stack overflow - Why do we use ReLU in neural networks and how do we use it?](https://stats.stackexchange.com/questions/226923/why-do-we-use-relu-in-neural-networks-and-how-do-we-use-it)]
+    - 계산 방식이 매우 간단: `return max(0, x)`, 음수는 0으로 고정되며 지수나 곱하기 나누기 등의 고비용의 연산 x
+    - 0과 1 사이에만 국한되는 계산이 어느 선 이상 반복 될 경우 가중치?(gradient)가 사라지는 *Vanishing Gradient* 문제를 값을 보존하여 해결함
+  - [[Sigmoid 보다 ReLU가 더 좋아](http://pythonkim.tistory.com/40)]
+    - 윗 링크의 Vanishing Gradient에 대해 자세히 설명해주고 있음
 
 공통점
 - 비선형 함수
@@ -30,13 +36,17 @@
 - '매끄러움'의 차이
 - 계단 함수는 0과 1만을, 시그노이드 함수는 연속된 실수를 결과값으로 반환
 
-## 시그모이드 함수, 도대체 왜..?
+![여러가지 활성화 함수들](activation_functions.png)
+
+여러가지 다양한 활성화 함수들
+
+## 시그모이드 함수를 왜 사용하는가?
 
 ![시그모이드 함수(로지스틱 회귀 함수)](logistic_regression.png)
 
 - 로지스틱 회귀 함수라고도 함
-- 은닉층을 다층으로 구성하는 이점이 없기 때문?
-- 계단 함수에서의 선형 결과가 아닌 비선형 함수로 결과를 출력하기 위해서.
+- 선형으로 구성할 경우 은닉층을 다층으로 구성하는 이점이 없기 때문?
+- 계단 함수에서의 선형 결과가 아닌 비선형 함수로 결과를 출력하기 위해서
 - 수식화 하더라도 범위가 방대한 데이터를 0과 1 사이의 값으로 바꾸어주기 위해
   - 입력값을 양수로 바꾸어주기 위해 e^(-x)가 들어감 - 어떤 값이 x에 들어오든 양수가 됨
   - x가 클수록 확률이 증가하도록 하기 위해 e^(-x)가 분모에 들어감
@@ -103,7 +113,32 @@ Z2 = sigmoid(A2)
 ## 출력층 설계 - 소프트맥스 함수
 
 신경망의 목적 - 분류와 회기 - 에 따라 다른 활성화 함수를 출력층에 적용한다.
-- 
+
+일반적으로 분류에는 소프트맥스 함수를, 회귀에는 항등 함수를 사용한다.
+
+- 항등 함수: 입력값을 그대로 반환해주는 함수
+- 소프트맥스 함수: n 번째 출력으로 n 번째 입력의 지수 함수를 모든 입력에 대한 지수 함수의 값으로 나눈 값을 내보내주는 함수
+
+![소프트맥스 함수](softmax_function.png)
+
+```py
+def softmax(x):
+  # np.exp(x) - 각 출력층의 입력값이 지수 함수를 거쳐 변환된 값
+  # np.sum(np.exp(x)) - 모든 출력층의 입력값이 지수 함수를 거친 다음, 합산됨
+  return np.exp(x) / np.sum(np.exp(x))
+
+def softmax_enhanced(x):
+  # overflow 문제를 해결하기 위해 임의의 정수를 빼준다.
+  # 일반적으로 입력값 중 가장 큰 값을 빼준다고 함. - vanishing gradient?
+  sub = x - np.max(x)
+  return np.exp(sub) / np.sum(np.exp(sub))
+```
+
+결국 소프트맥스 함수의 출력값은:
+- 모든 입력값으로부터 영향을 받으며
+- 출력의 총 합은 1이 되므로 출력값 자체를 **확률**로 해석 할 수 있음
+- 그래서 소프트맥스 함수는 분류 목적의 문제에 많이 사용된다.
+- 소프트맥스 함수로 출력값 간의 대소 관계는 변하지 않고 / 분류는 가장 높은 확률을 정답으로 택하므로 확률로서의 의미가 없는 경우 불필요한 연산을 위해 소프트맥스 함수를 생략하기도 함
 
 # 덧.
 
@@ -124,3 +159,9 @@ Z2 = sigmoid(A2)
 학습하고 보니 우물 안 개구리가 되어서 빠져나가지 못하는 local minima 문제
 - Backpropagation [링크](http://happycontrol.tistory.com/entry/%EC%97%AD%EC%A0%84%ED%8C%8C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98BackPropagation-%EC%88%98%EC%97%85%EB%B2%84%EC%A0%84?category=482449)
 - Pretraining: 데이터와 층을 미리 학습
+
+## 머신러닝 데이터셋
+
+- MNIST: 0-9 hand-writing images, 60,000 training dataset, 10,000 test dataset.
+- CIFAR-10: 32x32 images, 50,000 training dataset, 10,000 test dataset. `airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck`
+- CIFAR-100: same as CIFAR-10 but separated in 100 classes with 20 super-classes.
