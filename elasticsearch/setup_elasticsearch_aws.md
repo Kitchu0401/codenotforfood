@@ -51,3 +51,7 @@ sysctl -w vm.max_map_count=262144
 # /etc/sysctl.conf 파일에서:
 vm.max_map_count=262144
 ```
+
+## 커밋 후
+
+[휴 좋은 시간낭비였다](https://aws.amazon.com/ko/elasticsearch-service/)
