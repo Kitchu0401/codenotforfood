@@ -1,0 +1,53 @@
+# Settings file in YAML
+#
+# - Logstash 기본 설정 구문 생략 -
+#
+# schedule 파라미터 설정을 위한 Rufus Scheduler 예제 첨부합니다.
+# Rufus Scheduler 관련 참고: https://github.com/jmettraux/rufus-scheduler
+# 
+# Examples:
+# 
+# * 5 * 1-3 *                 will execute every minute of 5am every day of January through March.
+# 0 * * * *                   will execute on the 0th minute of every hour every day.
+# 0 6 * * * America/Chicago   will execute at 6:00am (UTC/GMT -5) every day.
+#
+# 아래는 Elasticsearch의 Mysql 데이터베이스를 주기적으로 조회,
+# 조회된 데이터를 지정한 Elasticsearch의 인덱스에 색인 요청하는 config입니다.
+#
+
+input {
+  jdbc {
+    # Mysql connector jar가 필요합니다. (경로 포함 full path 기입을 권장)
+    jdbc_driver_library => "{FULL_PATH_OF_CONNECTOR_JAR_FILE}"
+    jdbc_driver_class => "com.mysql.cj.jdbc.Driver"
+    # 조회 요청을 보낼 Mysql uri
+    jdbc_connection_string => "jdbc:mysql://{IP_ADDRESS}:{PORT}/{DEFAULT_SCHEMA}"
+    # Mysql 계정명과 패스워드
+    jdbc_user => "{ACCOUNT_NAME}"
+    jdbc_password => "{ACCOUNT_PASSWORD}"
+    # Send search request every 10 seconds
+    schedule => "*/6 * * * *"
+    # true일 경우 tracking_column에 정의된 칼럼을 지정된 변수명(:sql_last_value)에 저장합니다.
+    # - 참고: https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html#_predefined_parameters
+    use_column_value => true
+    # 칼럼명을 지정 할 경우 해당 칼럼을 지정된 변수명(:sql_last_value)에 저장합니다.
+    # 추적하는 칼럼 타입은 현재 numeric 및 timestamp를 지원합니다.
+    # - 참고: https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html#plugins-inputs-jdbc-tracking_column_type
+    tracking_column => "{COLUMN_NAME}"
+    # Mysql 조회 쿼리문
+    statement => "SELECT * FROM {SCHEMA}.{TABLE_NAME} WHERE {COLUMN} > IFNULL(:sql_last_value, 0)"
+  }
+}
+
+output {
+  # only for debugging
+  stdout { codec => rubydebug }
+  elasticsearch {
+    # Elasticsearch index 대상 IP주소 및 포트번호
+    hosts => ["{IP_ADDRESS}:{PORT}"]
+    # Elasticsearch index 대상 인덱스 명
+    index => "{INDEX_NAME}"
+    # Elasticsearch index 대상 타입 명
+    document_type => "{TYPE_NAME}"
+  }
+}
