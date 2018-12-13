@@ -1,4 +1,4 @@
-# Search Reliability Engineering: 지진에도 흔들리지 않는 네이버 검색 시스템 by 김재헌 (Naver Search & Solution)
+# Search Reliability Engineering: 지진에도 흔들리지 않는 네이버 검색 시스템 by 김재헌 (Naver System & Solution)
 
 SRE(Site Reliability Engineering)란: 글로벌 스케일의 서비스에서 시스템의 신뢰성을 보장하기 위한 기술 분야, 방법론, 문화
 
